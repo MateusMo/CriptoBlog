@@ -1,36 +1,27 @@
 'use strict'
 
-const User = (sequelize, DataTypes) => {
-    const User = sequelize.define('User', {
+const Post = (sequelize, DataTypes) => {
+    const Post = sequelize.define('Post', {
         id: {
             allowNull: false,
             autoIncrement: true,
             primaryKey: true,
             type: DataTypes.INTEGER
         },
-        wallet: {
+        title: {
             type: DataTypes.STRING,
             allowNull: false,
-            validate: {
-                len: [8, 45]
-            }
         },
-        nickName: {
+        content: {
             type: DataTypes.STRING,
             allowNull: false,
-            validate: {
-                len: [8, 45]
-            }
         },
-        asciiArt: {
+        userId: {
             type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        password: {
-            type: DataTypes.STRING,
             allowNull: false,
-            validate: {
-                len: [8, 45]
+            references: {
+                model: 'Users',
+                key: 'id'
             },
         },
         createdAt: {
@@ -41,11 +32,13 @@ const User = (sequelize, DataTypes) => {
             allowNull: false,
             type: DataTypes.DATE
         }
-    }, {});
+    },{})
 
-    User.associate = (models) => {
-        //User.hasMany(models.Post,{foreignKey:'userId'});
-    }
+    Post.associate = (models) => {
+        Post.belongsTo(models.User, { foreignKey: 'userId' });
+    };
+
+    return Post;
 }
 
-module.exports = User;
+module.exports = Post;

@@ -3,37 +3,37 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    queryInterface.createTable('Users', {
+    queryInterface.createTable('Comment', {
       id: {
-        allowNull: false,
-        autoIncrement: true,
+        type: Sequelize.INTEGER,
         primaryKey: true,
+        autoIncrement: true,
+      },
+      content: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      lambos: {
         type: Sequelize.INTEGER
       },
-      wallet: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        validate: {
-          len: [8, 45]
-        }
+      fuds: {
+        type: Sequelize.INTEGER
       },
-      nickName: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        validate: {
-          len: [8, 45]
-        }
-      },
-      asciiArt: {
+      userId: {
         type: Sequelize.INTEGER,
-        allowNull: false
-      },
-      password: {
-        type: Sequelize.STRING,
         allowNull: false,
-        validate: {
-          len: [8, 45]
-        }
+        references: {
+          model: 'Users',
+          key: 'id'
+        },
+      },
+      PostId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'Posts',
+          key: 'id'
+        },
       },
       createdAt: {
         allowNull: false,
