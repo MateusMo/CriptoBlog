@@ -10,8 +10,14 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      // Add other columns for the Coin table
-      // ...
+      coinName: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      coinSymbol: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
