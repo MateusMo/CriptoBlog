@@ -1,6 +1,6 @@
 'use strict'
 
-const Srategy = (sequelize,DataTypes) => {
+const Strategy = (sequelize,DataTypes) => {
     sequelize.define('Strategy',{
         id: {
             allowNull: false,
@@ -8,21 +8,37 @@ const Srategy = (sequelize,DataTypes) => {
             primaryKey: true,
             type: DataTypes.INTEGER
         },
-        Coin: {
+        coin: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        BuyPrice: {
+        buyPrice: {
             type: DataTypes.DECIMAL,
             allowNull: false,
         },
-        SellPrice: {
+        sellPrice: {
             type: DataTypes.DECIMAL,
             allowNull: false,
         },
-        Comment: {
+        comment: {
             type: DataTypes.STRING,
             allowNull: false,
+        },
+        userId: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'User',
+                key: 'id'
+            }
+        },
+        coinId: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'User',
+                key: 'id'
+            }
         },
         createdAt: {
             allowNull: false,
@@ -32,5 +48,11 @@ const Srategy = (sequelize,DataTypes) => {
             allowNull: false,
             type: DataTypes.DATE
         }
-    })
+    });
+
+    Strategy.associate = (models) => {
+        Strategy.belongsTo(models.User, { foreignKey: 'id' });
+        Strategy.belongsTo(models.Coin, { foreignKey: 'id' });
+    }
+
 }

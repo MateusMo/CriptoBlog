@@ -2,8 +2,8 @@
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
-    await queryInterface.createTable('Posts',{
+  async up(queryInterface, Sequelize) {
+    await queryInterface.createTable('Posts', {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -21,22 +21,22 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-            model: 'Users',
-            key: 'id'
+          model: 'Users',
+          key: 'id'
         },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
-    },
-    postId: {
-      type: Sequelize.INTEGER,
-      allowNull: true,
-      references: {
+      },
+      coinId: {
+        type: Sequelize.INTEGER,
+        allowNull: true,
+        references: {
           model: 'Coins',
           key: 'id'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
       },
-      onUpdate: 'CASCADE',
-      onDelete: 'CASCADE'
-  },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
@@ -45,10 +45,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }
-    })
+    });
   },
 
-  async down (queryInterface, Sequelize) {
+  async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Posts');
   }
 };

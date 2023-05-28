@@ -26,14 +26,18 @@ module.exports = {
           model: 'Users',
           key: 'id'
         },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
       },
-      PostId: {
+      postId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
           model: 'Posts',
           key: 'id'
         },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
       },
       createdAt: {
         allowNull: false,

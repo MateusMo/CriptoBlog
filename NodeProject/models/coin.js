@@ -8,11 +8,11 @@ const Coin = (sequelize,DataTypes) => {
             primaryKey: true,
             type: DataTypes.INTEGER
         },
-        CoinName: {
+        coinName: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        CoinSymbol: {
+        coinSymbol: {
             type: DataTypes.STRING,
             allowNull: false,
         },
@@ -27,7 +27,6 @@ const Coin = (sequelize,DataTypes) => {
     })
     Coin.associate = (models) => {
         Coin.hasMany(models.Post,{foreignKey:'id'});
+        Coin.hasMany(models.Strategy,{foreignKey:'id'});
     }
 }
-
-module.exports = Coin;

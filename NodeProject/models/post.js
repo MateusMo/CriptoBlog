@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 const Post = (sequelize, DataTypes) => {
     const Post = sequelize.define('Post', {
@@ -10,27 +10,27 @@ const Post = (sequelize, DataTypes) => {
         },
         title: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: false
         },
         content: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: false
         },
         userId: {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
-                model: 'Users',
+                model: 'User',
                 key: 'id'
-            },
+            }
         },
         coinId: {
             type: DataTypes.INTEGER,
             allowNull: true,
             references: {
-                model: 'Users',
+                model: 'Coin',
                 key: 'id'
-            },
+            }
         },
         createdAt: {
             allowNull: false,
@@ -40,14 +40,14 @@ const Post = (sequelize, DataTypes) => {
             allowNull: false,
             type: DataTypes.DATE
         }
-    },{})
+    }, {});
 
     Post.associate = (models) => {
-        Post.belongsTo(models.User, { foreignKey: 'id' });
-        Post.belongsTo(models.Coin, { foreignKey: 'id' });
+        Post.belongsTo(models.User, { foreignKey: 'userId' });
+        Post.belongsTo(models.Coin, { foreignKey: 'coinId' });
     };
 
     return Post;
-}
+};
 
 module.exports = Post;
