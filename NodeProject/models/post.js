@@ -24,6 +24,14 @@ const Post = (sequelize, DataTypes) => {
                 key: 'id'
             },
         },
+        coinId: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
+            references: {
+                model: 'Users',
+                key: 'id'
+            },
+        },
         createdAt: {
             allowNull: false,
             type: DataTypes.DATE
@@ -35,7 +43,8 @@ const Post = (sequelize, DataTypes) => {
     },{})
 
     Post.associate = (models) => {
-        Post.belongsTo(models.User, { foreignKey: 'userId' });
+        Post.belongsTo(models.User, { foreignKey: 'id' });
+        Post.belongsTo(models.Coin, { foreignKey: 'id' });
     };
 
     return Post;

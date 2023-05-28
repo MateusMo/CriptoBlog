@@ -3,40 +3,20 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.createTable('Posts',{
+    queryInterface.createTable('Coin',{
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
       },
-      title: {
+      coinName: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      content: {
+      coinSymbol: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      userId: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-            model: 'Users',
-            key: 'id'
-        },
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE'
-    },
-    postId: {
-      type: Sequelize.INTEGER,
-      allowNull: true,
-      references: {
-          model: 'Coins',
-          key: 'id'
-      },
-      onUpdate: 'CASCADE',
-      onDelete: 'CASCADE'
-  },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
@@ -49,6 +29,11 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-    await queryInterface.dropTable('Posts');
+    /**
+     * Add reverting commands here.
+     *
+     * Example:
+     * await queryInterface.dropTable('users');
+     */
   }
 };
