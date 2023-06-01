@@ -1,6 +1,6 @@
 'use strict'
 
-const Coin = (sequelize,DataTypes) => {
+module.exports = (sequelize,DataTypes) => {
     const Coin = sequelize.define('Coin',{
         id: {
             allowNull: false,
@@ -29,4 +29,6 @@ const Coin = (sequelize,DataTypes) => {
         Coin.hasMany(models.Post,{foreignKey:'id'});
         Coin.hasMany(models.Strategy,{foreignKey:'id'});
     }
+
+    return Coin;
 }

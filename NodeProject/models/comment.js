@@ -1,4 +1,4 @@
-const Comment = (sequelize, DataTypes) => {
+module.exports = (sequelize, DataTypes) => {
     const Comment = sequelize.define('Comment', {
         id: {
             type: DataTypes.INTEGER,
@@ -45,5 +45,7 @@ const Comment = (sequelize, DataTypes) => {
         Comment.belongsTo(models.User, { foreignKey: 'id' });
         Comment.belongsTo(models.Post, { foreignKey: 'id' });
     }
+
+    return Comment;
 }
 

@@ -1,6 +1,6 @@
 'use strict';
 
-const User = (sequelize, DataTypes) => {
+module.exports = (sequelize, DataTypes) => {
     const User = sequelize.define('User', {
         id: {
             allowNull: false,
@@ -44,12 +44,10 @@ const User = (sequelize, DataTypes) => {
     }, {});
 
     User.associate = (models) => {
-        User.hasMany(models.Post, { foreignKey: 'id' });
-        User.hasMany(models.Strategy,{foreignKey: 'id'});
-        User.hasMany(models.Comment,{foreignKey: 'id'});
+        User.hasMany(models.Post, { foreignKey: 'UserId' });
+        User.hasMany(models.Strategy, { foreignKey: 'UserId' });
+        User.hasMany(models.Comment, { foreignKey: 'UserId' });
     };
 
     return User;
 };
-
-module.exports = User;

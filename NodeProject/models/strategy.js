@@ -1,7 +1,7 @@
 'use strict'
 
-const Strategy = (sequelize,DataTypes) => {
-    sequelize.define('Strategy',{
+module.exports = (sequelize,DataTypes) => {
+    const Strategy = sequelize.define('Strategy',{
         id: {
             allowNull: false,
             autoIncrement: true,
@@ -54,5 +54,5 @@ const Strategy = (sequelize,DataTypes) => {
         Strategy.belongsTo(models.User, { foreignKey: 'id' });
         Strategy.belongsTo(models.Coin, { foreignKey: 'id' });
     }
-
+    return Strategy;
 }
