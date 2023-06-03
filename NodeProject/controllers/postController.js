@@ -39,7 +39,7 @@ const postPost = async (req, res, next) => {
 const putPost = async (req, res, next) => {
     try {
         const { title, content, userId, coinId } = req.body;
-        const postId = req.params.postId; // Assuming you have the post ID in the URL path
+        const postId = req.params.postId;
 
         // Find the post by ID and update the fields
         const updatedPost = await Post.findByIdAndUpdate(
@@ -66,7 +66,7 @@ const putPost = async (req, res, next) => {
 // Delete a post
 const deletePost = async (req, res, next) => {
     try {
-        const postId = req.params.postId; // Assuming you have the post ID in the URL path
+        const postId = req.params.postId;
 
         // Find the post by ID and delete it
         const deletedPost = await Post.findByIdAndDelete(postId);

@@ -12,7 +12,7 @@ router.get('/:id',postController.getById);
 router.post('/',postController.postPost);
 
 //Update a post
-router.put('/',postController.putPost);
+router.put('/:id',postController.putPost);
 
 //Delete a post
 router.delete('/',postController.deletePost);

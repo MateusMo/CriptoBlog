@@ -63,9 +63,8 @@ const deleteUser = async (req, res, next) => {
 const putUser = async (req, res, next) => {
     try {
         const { wallet, nickName, asciiArt, password } = req.body;
-        const userId = req.params.userId; // Assuming you have the user ID in the URL path
+        const userId = req.params.userId; 
 
-        // Find the user by ID and update the fields
         const updatedUser = await User.findByIdAndUpdate(
             userId,
             {
