@@ -5,12 +5,14 @@ const bodyParser = require('body-parser');
 const userRouter = require('./routes/userRoute')
 const postRouter = require('./routes/postRoute')
 const commentRouter = require('./routes/commentRoute')
+const strategyRouter = require('./routes/strategyRoute')
 
 app.use(bodyParser.json());
 
 app.use('/user',userRouter);
 app.use('/post',postRouter);
 app.use('/comment',commentRouter);
+app.use('strategy',strategyRouter)
 
 app.listen(port);
 
