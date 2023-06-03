@@ -38,7 +38,19 @@ const postStrategy = async (req, res, next) => {
 
 const putStrategy = async (req, res, next) => {
     try {
-
+        const {coin,buyPrice,sellPrice,comment,userId} = req.body;
+        const { id } = req.params;
+        const updateStrategy = Strategy.findByIdAndUpdate(
+            id,{
+                coin,
+                buyPrice,
+                sellPrice,
+                comment,
+                userId
+            },
+            {new:true}
+        )
+        return res.status(201).send({message:updateStrategy});
     } catch (error) {
         return res.status(500).send({ message: error })
     }
