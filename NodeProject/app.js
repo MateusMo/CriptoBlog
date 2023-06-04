@@ -7,7 +7,9 @@ const postRouter = require('./routes/postRoute');
 const commentRouter = require('./routes/commentRoute');
 const strategyRouter = require('./routes/strategyRoute');
 const coinRouter = require('./routes/strategyRoute');
-
+const crypto = require('crypto');
+const secretKey = crypto.randomBytes(64).toString('hex');
+//console.log('JWT Secret Key:', secretKey);
 
 app.use(bodyParser.json());
 
