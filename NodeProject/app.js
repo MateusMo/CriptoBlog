@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const port = 3000;
 const bodyParser = require('body-parser');
+const loginRouter = require('./routes/login')
 const userRouter = require('./routes/userRoute');
 const postRouter = require('./routes/postRoute');
 const commentRouter = require('./routes/commentRoute');
@@ -12,7 +13,7 @@ const secretKey = crypto.randomBytes(64).toString('hex');
 //console.log('JWT Secret Key:', secretKey);
 
 app.use(bodyParser.json());
-
+app.use('/login',loginRouter);
 app.use('/user',userRouter);
 app.use('/post',postRouter);
 app.use('/comment',commentRouter);
