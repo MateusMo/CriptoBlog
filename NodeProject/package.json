@@ -17,6 +17,8 @@
     "nodemon": "^2.0.22",
     "sequelize": "^6.31.1",
     "sequelize-cli": "^6.6.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^4.6.3",
     "web3": "^1.10.0"
   }
 }

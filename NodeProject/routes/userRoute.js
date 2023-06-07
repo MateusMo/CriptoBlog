@@ -3,19 +3,64 @@ const router = express.Router();
 const userController = require('../controllers/userController');
 const authenticateToken = require('../middleWare/auth.js');
 
-// Get all users
+/**
+ * @swagger
+ * /users:
+ *   get:
+ *     summary: Get all users
+ *     description: Returns a list of all users.
+ *     responses:
+ *       200:
+ *         description: A list of users.
+ */
 router.get('/',authenticateToken,userController.getAllUsers);
 
-// Get user by ID
+/**
+ * @swagger
+ * /usersById:
+ *   get:
+ *     summary: Get a user by id
+ *     description: Returns a list of all users.
+ *     responses:
+ *       200:
+ *         description: A user.
+ */
 router.get('/:id',authenticateToken,userController.getUserById);
 
-//Create new user
+/**
+ * @swagger
+ * /PostUser:
+ *   post:
+ *     summary: create a new user
+ *     description: create a new user.
+ *     responses:
+ *       200:
+ *         description: New user.
+ */
 router.post('/',authenticateToken,userController.postUser);
 
-//Delete a user
+/**
+ * @swagger
+ * /DeleteUser:
+ *   delete:
+ *     summary: delete a user by his Id
+ *     description: delete a user.
+ *     responses:
+ *       200:
+ *         description: delete a user.
+ */
 router.delete('/',authenticateToken,userController.deleteUser);
 
-//Update user
+/**
+ * @swagger
+ * /PutUser:
+ *   put:
+ *     summary: Update a user
+ *     description: Update a user.
+ *     responses:
+ *       200:
+ *         description: Update a user.
+ */
 router.put('/:id',authenticateToken,userController.putUser)
 
 module.exports = router;
