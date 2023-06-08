@@ -10,12 +10,8 @@ contract UserCredit {
 
     User[] public users;
 
-    constructor(uint[] memory _values, address[] memory _wallets) {
-        require(_values.length == _wallets.length, "Invalid input lengths");
-
-        for (uint i = 0; i < _values.length; i++) {
-            users.push(User(_values[i], _wallets[i]));
-        }
+    constructor(uint _value, address _wallet) {
+        users.push(User(_value, _wallet));
     }
 
     function getCredit(address wallet) public view returns (uint) {
@@ -27,9 +23,9 @@ contract UserCredit {
         revert("User not found");
     }
 
-    function addCredit(uint _value) public {
+    function addCredit(uint _value, address _wallet) public {
         for (uint i = 0; i < users.length; i++) {
-            if (users[i].wallet == msg.sender) {
+            if (users[i].wallet == _wallet) {
                 users[i].value += _value;
                 return;
             }
