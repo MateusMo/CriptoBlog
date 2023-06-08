@@ -8,7 +8,8 @@ const postRouter = require('./routes/postRoute');
 const commentRouter = require('./routes/commentRoute');
 const strategyRouter = require('./routes/strategyRoute');
 const coinRouter = require('./routes/strategyRoute');
-const contractRouter = require('./routes/contractRoute');
+const contractRouter = require('./routes/testContractRoute');
+const creditContractRouter = require('./routes/creditContractRouter');
 const swaggerUi = require('swagger-ui-express');
 const swaggerSpec = require('./swagger.js');
 
@@ -21,6 +22,7 @@ app.use('/comment',commentRouter);
 app.use('/strategy',strategyRouter);
 app.use('/coin',coinRouter)
 app.use('/contract',contractRouter);
+app.use('/creditContract',creditContractRouter);
 
 app.listen(port);
 
