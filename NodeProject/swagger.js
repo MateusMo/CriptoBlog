@@ -8,7 +8,15 @@ const options = {
             version: '1.0.0',
         },
     },
-    apis: [`./routes/*.js`],
+    apis: [
+        './routes/coinRouter.js',
+        './routes/commentRoute.js',
+        './routes/contractRoute.js',
+        './routes/login.js',
+        './routes/postRoute.js',
+        './routes/strategyRoute.js',
+        './routes/userRoute.js',
+    ],
 };
 
 const swaggerSpec = swaggerJSDoc(options);

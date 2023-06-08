@@ -5,10 +5,19 @@ const authenticateToken = require('../middleWare/auth.js');
 
 /**
  * @swagger
+ * tags:
+ *   name: Strategies
+ *   description: Coin management
+ */
+
+
+/**
+ * @swagger
  * /strategies:
  *   get:
  *     summary: Get all strategies
  *     description: Returns a list of all strategies.
+ *     tags: [Strategies]
  *     responses:
  *       200:
  *         description: A list of strategies.
@@ -21,6 +30,7 @@ router.get('/strategies', authenticateToken, strategyController.getAll);
  *   get:
  *     summary: Get strategy by ID
  *     description: Returns a strategy based on the provided ID.
+ *     tags: [Strategies]
  *     parameters:
  *       - in: path
  *         name: id
@@ -40,6 +50,7 @@ router.get('/strategies/:id', authenticateToken, strategyController.getById);
  *   post:
  *     summary: Create a new strategy
  *     description: Creates a new strategy.
+ *     tags: [Strategies]
  *     responses:
  *       200:
  *         description: The newly created strategy.
@@ -52,6 +63,7 @@ router.post('/strategies', authenticateToken, strategyController.postStrategy);
  *   put:
  *     summary: Update a strategy
  *     description: Updates an existing strategy based on the provided ID.
+ *     tags: [Strategies]
  *     parameters:
  *       - in: path
  *         name: id
@@ -70,6 +82,7 @@ router.put('/strategies/:id', authenticateToken, strategyController.putStrategy)
  * /strategies/{id}:
  *   delete:
  *     summary: Delete a strategy
+ *     tags: [Strategies]
  *     description: Deletes a strategy based on the provided ID.
  *     parameters:
  *       - in: path

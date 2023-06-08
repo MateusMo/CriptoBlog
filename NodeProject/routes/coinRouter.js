@@ -5,15 +5,10 @@ const authenticateToken = require('../middleWare/auth.js');
 
 /**
  * @swagger
- * /users:
- *   get:
- *     summary: Get all users
- *     description: Returns a list of all users.
- *     responses:
- *       200:
- *         description: A list of users.
+ * tags:
+ *   name: Coins
+ *   description: Coin management
  */
-router.get('/', authenticateToken, userController.getAllUsers);
 
 /**
  * @swagger
@@ -21,6 +16,7 @@ router.get('/', authenticateToken, userController.getAllUsers);
  *   get:
  *     summary: Get all coins
  *     description: Returns a list of all coins.
+ *     tags: [Coins]
  *     responses:
  *       200:
  *         description: A list of coins.
@@ -33,6 +29,7 @@ router.get('/', authenticateToken, coinController.getAll);
  *   get:
  *     summary: Get a coin by ID
  *     description: Returns a coin with the specified ID.
+ *     tags: [Coins]
  *     parameters:
  *       - name: id
  *         in: path
@@ -52,6 +49,7 @@ router.get('/:id', authenticateToken, coinController.getById);
  *   put:
  *     summary: Update a coin
  *     description: Updates a coin with the specified ID.
+ *     tags: [Coins]
  *     parameters:
  *       - name: id
  *         in: path
@@ -71,6 +69,7 @@ router.put('/:id', authenticateToken, coinController.updateCoin);
  *   post:
  *     summary: Create a new coin
  *     description: Creates a new coin.
+ *     tags: [Coins]
  *     responses:
  *       200:
  *         description: The newly created coin.
@@ -83,6 +82,7 @@ router.post('/', authenticateToken, coinController.postCoin);
  *   delete:
  *     summary: Delete a coin
  *     description: Deletes a coin with the specified ID.
+ *     tags: [Coins]
  *     parameters:
  *       - name: id
  *         in: path

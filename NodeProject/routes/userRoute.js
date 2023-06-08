@@ -3,17 +3,27 @@ const router = express.Router();
 const userController = require('../controllers/userController');
 const authenticateToken = require('../middleWare/auth.js');
 
+
+/**
+ * @swagger
+ * tags:
+ *   name: Users
+ *   description: User management
+ */
+
+
 /**
  * @swagger
  * /users:
  *   get:
  *     summary: Get all users
  *     description: Returns a list of all users.
+ *     tags: [Users]
  *     responses:
  *       200:
  *         description: A list of users.
  */
-router.get('/',authenticateToken,userController.getAllUsers);
+router.get('/', authenticateToken, userController.getAllUsers);
 
 /**
  * @swagger
@@ -21,23 +31,25 @@ router.get('/',authenticateToken,userController.getAllUsers);
  *   get:
  *     summary: Get a user by id
  *     description: Returns a list of all users.
+ *     tags: [Users]
  *     responses:
  *       200:
  *         description: A user.
  */
-router.get('/:id',authenticateToken,userController.getUserById);
+router.get('/:id', authenticateToken, userController.getUserById);
 
 /**
  * @swagger
  * /PostUser:
  *   post:
  *     summary: create a new user
+ *     tags: [Users]
  *     description: create a new user.
  *     responses:
  *       200:
  *         description: New user.
  */
-router.post('/',authenticateToken,userController.postUser);
+router.post('/', authenticateToken, userController.postUser);
 
 /**
  * @swagger
@@ -45,11 +57,12 @@ router.post('/',authenticateToken,userController.postUser);
  *   delete:
  *     summary: delete a user by his Id
  *     description: delete a user.
+ *     tags: [Users]
  *     responses:
  *       200:
  *         description: delete a user.
  */
-router.delete('/',authenticateToken,userController.deleteUser);
+router.delete('/', authenticateToken, userController.deleteUser);
 
 /**
  * @swagger
@@ -57,10 +70,11 @@ router.delete('/',authenticateToken,userController.deleteUser);
  *   put:
  *     summary: Update a user
  *     description: Update a user.
+ *     tags: [Users]
  *     responses:
  *       200:
  *         description: Update a user.
  */
-router.put('/:id',authenticateToken,userController.putUser)
+router.put('/:id', authenticateToken, userController.putUser)
 
 module.exports = router;

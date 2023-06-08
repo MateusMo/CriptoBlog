@@ -5,10 +5,19 @@ const authenticateToken = require('../middleWare/auth.js');
 
 /**
  * @swagger
+ * tags:
+ *   name: Posts
+ *   description: Coin management
+ */
+
+
+/**
+ * @swagger
  * /posts:
  *   get:
  *     summary: Get all posts
  *     description: Returns a list of all posts.
+ *     tags: [Posts]
  *     responses:
  *       200:
  *         description: A list of posts.
@@ -21,6 +30,7 @@ router.get('/posts', authenticateToken, postController.getAll);
  *   get:
  *     summary: Get a post by ID
  *     description: Returns a post with the specified ID.
+ *     tags: [Posts]
  *     parameters:
  *       - in: path
  *         name: id
@@ -42,6 +52,7 @@ router.get('/posts/:id', authenticateToken, postController.getById);
  *   post:
  *     summary: Create a new post
  *     description: Creates a new post.
+ *     tags: [Posts]
  *     requestBody:
  *       content:
  *         application/json:
@@ -67,6 +78,7 @@ router.post('/posts', authenticateToken, postController.postPost);
  *   put:
  *     summary: Update a post
  *     description: Updates a post with the specified ID.
+ *     tags: [Posts]
  *     parameters:
  *       - in: path
  *         name: id
@@ -101,6 +113,8 @@ router.put('/posts/:id', authenticateToken, postController.putPost);
  *   delete:
  *     summary: Delete a post
  *     description: Deletes a post.
+ *     tags: [Posts]
+ * 
  *     responses:
  *       200:
  *         description: The deleted post.

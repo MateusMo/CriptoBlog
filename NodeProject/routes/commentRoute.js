@@ -5,10 +5,18 @@ const authenticateToken = require('../middleWare/auth.js');
 
 /**
  * @swagger
+ * tags:
+ *   name: Comments
+ *   description: Coin management
+ */
+
+/**
+ * @swagger
  * /comments:
  *   get:
  *     summary: Get all comments
  *     description: Returns a list of all comments.
+ *     tags: [Comments]
  *     responses:
  *       200:
  *         description: A list of comments.
@@ -21,6 +29,7 @@ router.get('/comments', authenticateToken, Comment.getAll);
  *   get:
  *     summary: Get a comment by ID
  *     description: Returns a comment based on the provided ID.
+ *     tags: [Comments]
  *     parameters:
  *       - in: path
  *         name: id
@@ -40,6 +49,7 @@ router.get('/comments/:id', authenticateToken, Comment.getById);
  *   post:
  *     summary: Create a new comment
  *     description: Creates a new comment.
+ *     tags: [Comments]
  *     responses:
  *       200:
  *         description: The created comment.
@@ -52,6 +62,7 @@ router.post('/comments', authenticateToken, Comment.postComment);
  *   put:
  *     summary: Update a comment
  *     description: Updates an existing comment based on the provided ID.
+ *     tags: [Comments]
  *     parameters:
  *       - in: path
  *         name: id
@@ -70,6 +81,7 @@ router.put('/comments/:id', authenticateToken, Comment.putComment);
  * /comments/{id}:
  *   delete:
  *     summary: Delete a comment
+ *     tags: [Comments]
  *     description: Deletes a comment based on the provided ID.
  *     parameters:
  *       - in: path
