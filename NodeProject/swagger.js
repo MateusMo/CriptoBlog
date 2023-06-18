@@ -16,6 +16,7 @@ const options = {
         './routes/postRoute.js',
         './routes/strategyRoute.js',
         './routes/userRoute.js',
+        './routes/creditContractRouter.js'
     ],
 };
 

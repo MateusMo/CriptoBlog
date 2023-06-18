@@ -12,7 +12,7 @@ const contract = require('../contractContext/CreditContract/creditContract.js');
 
 /**
  * @swagger
- * /comments:
+ * /getCreditByWallet:
  *   get:
  *     summary: Get the value related to a wallet
  *     description: Get the value related to a wallet.
@@ -25,8 +25,8 @@ router.get('/:address',contract.getCredit);
 
 /**
  * @swagger
- * /comments:
- *   get:
+ * /changeCreditByWallet:
+ *   post:
  *     summary: Add a value related to a wallet
  *     description: Add a value related to a wallet.
  *     tags: [creditRouter]
